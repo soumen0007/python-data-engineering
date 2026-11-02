@@ -22,9 +22,9 @@ def transform_users(users):
             "user_id": user["id"],
             "name": user["name"],
             "email": user["email"],
-            "city": user["address"]["city"],
+            "city": (user.get("address") or {}).get("city", ""),
             "username": user["username"],
-            "company_name": user["company"]["name"]
+            "company_name": (user.get("company") or {}).get("name")
         })
 
     return cleaned_users
